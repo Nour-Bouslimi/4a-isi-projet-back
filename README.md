@@ -95,15 +95,12 @@ flowchart LR
 ```
 
 4a-isi-projet-back/
-
 ├── app/
-
-│   ├── main.py        # point d'entrée : création de l'app FastAPI
-
-│   └── routers/       # routes par ressource 
-
+│   ├── main.py        # point d'entrée, création des tables au démarrage
+│   ├── config.py      # paramètres (URL base, clé secrète JWT)
+│   ├── database.py    # connexion SQLite, session par requête
+│   └── routers/       # routes (à venir)
 ├── requirements.txt
-
 └── README.md
 
 ```
