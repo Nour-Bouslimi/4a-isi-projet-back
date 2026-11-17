@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.database import create_db_and_tables
-
+from app import models
 # Fournit un contexte de durée de vie pour l'application FastAPI, permettant de créer la base de données et les tables au démarrage
 @asynccontextmanager
 async def lifespan(app: FastAPI):

@@ -39,6 +39,7 @@ python -m venv .venv
 .venv\\Scripts\\activate.bat
 
 pip install -r requirements.txt
+python init_db.py
 
 ```
 
@@ -99,7 +100,10 @@ flowchart LR
 │   ├── main.py        # point d'entrée, création des tables au démarrage
 │   ├── config.py      # paramètres (URL base, clé secrète JWT)
 │   ├── database.py    # connexion SQLite, session par requête
+│   ├── models.py      # les 7 tables, miroir de db/schema.sql
 │   └── routers/       # routes (à venir)
+├── db/                # submodule : dépôt 4a-isi-projet-db 
+├── init_db.py         # crée poleatheck.db depuis db/schema.sql
 ├── requirements.txt
 └── README.md
 
