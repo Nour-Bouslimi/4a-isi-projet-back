@@ -1,0 +1,5 @@
+fastapi[standard]  
+sqlmodel  #l'ORM
+pyjwt
+pwdlib[argon2]
+pytest
