@@ -102,6 +102,7 @@ flowchart LR
 │   ├── database.py    # connexion SQLite, session par requête
 │   ├── models.py      # les 7 tables, miroir de db/schema.sql
 │   └── routers/       # routes (à venir)
+│   ├── schemas.py     # données de l'API quand elles diffèrent des tables (utilisateur, menu, commande)
 ├── db/                # submodule : dépôt 4a-isi-projet-db 
 ├── init_db.py         # crée poleatheck.db depuis db/schema.sql
 ├── requirements.txt

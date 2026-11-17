@@ -38,19 +38,22 @@ class MenuProduit(SQLModel, table=True):
     menu_id: int = Field(foreign_key="menu.id", primary_key=True, ondelete="CASCADE")
     produit_id: int = Field(foreign_key="produit.id", primary_key=True, ondelete="CASCADE")
 
-
-class Produit(SQLModel, table=True):
-    __tablename__ = "produit"
-
-    id: Optional[int] = Field(default=None, primary_key=True)
-    nom: str
+# cette classe est utilisée pour la relation many-to-many entre Menu et Produit
+class ProduitBase(SQLModel):
+    """Champs d'un produit, SANS id : sert aussi de données d'entrée de l'API."""
+    nom: str = Field(min_length=1)
     description: Optional[str] = None
     prix: float = Field(ge=0)
     stock: int = Field(default=0, ge=0)
     disponible: bool = True
 
-    menus: list["Menu"] = Relationship(back_populates="produits", link_model=MenuProduit)
+# cette classe est héritée par Produit, qui ajoute l'id et la relation avec Menu
+class Produit(ProduitBase, table=True):
+    __tablename__ = "produit"
 
+    id: Optional[int] = Field(default=None, primary_key=True)
+
+    menus: list["Menu"] = Relationship(back_populates="produits", link_model=MenuProduit)
 
 class Menu(SQLModel, table=True):
     __tablename__ = "menu"
@@ -65,13 +68,16 @@ class Menu(SQLModel, table=True):
     produits: list[Produit] = Relationship(back_populates="menus", link_model=MenuProduit)
 
 
-class Fermeture(SQLModel, table=True):
-    __tablename__ = "fermeture"
-
-    id: Optional[int] = Field(default=None, primary_key=True)
+class FermetureBase(SQLModel):
+    """Champs d'une fermeture, SANS id : sert aussi de données d'entrée de l'API."""
     date_fermeture: date = Field(unique=True)
     motif: Optional[str] = None
 
+
+class Fermeture(FermetureBase, table=True):
+    __tablename__ = "fermeture"
+
+    id: Optional[int] = Field(default=None, primary_key=True)
 
 class Commande(SQLModel, table=True):
     __tablename__ = "commande"
