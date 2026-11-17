@@ -83,13 +83,9 @@ fastapi dev app/main.py
 \### Architecture
 
 ```mermaid
-
 flowchart LR
-
-&#x20; F\[Front<br/>HTML/CSS/JS] -- "fetch JSON" --> A\[API FastAPI<br/>/api/\*]
-
-&#x20; A --> DB\[(SQLite)]
-
+  F["Front<br/>HTML/CSS/JS"] -- "fetch JSON" --> A["API FastAPI<br/>/api/..."]
+  A -- "SQLModel" --> DB[("SQLite")]
 ```
 
 
