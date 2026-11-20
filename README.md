@@ -105,6 +105,7 @@ flowchart LR
 │   └── routers/       # routes (à venir)
 │   ├── schemas.py     # données de l'API quand elles diffèrent des tables (utilisateur, menu, commande)
 │   ├── security.py    # hachage argon2, génération de mot de passe, tokens JWT
+│   ├── dependances.py        # controle d'accès : connecté / actif (non bloqué) / admin
 ├── db/                # submodule : dépôt 4a-isi-projet-db 
 ├── init_db.py         # crée poleatheck.db depuis db/schema.sql
 ├── requirements.txt
