@@ -5,7 +5,7 @@ from typing import Optional
 from sqlmodel import Field, Relationship, SQLModel
 
 
-# ---------- Enumérations ----------
+#Enumérations
 class Role(str, Enum):
     standard = "standard"
     admin = "admin"
@@ -18,7 +18,7 @@ class Statut(str, Enum):
     non_honoree = "non_honoree"
 
 
-# ---------- Tables  ----------
+# Tables
 
 class Utilisateur(SQLModel, table=True):
     __tablename__ = "utilisateur"

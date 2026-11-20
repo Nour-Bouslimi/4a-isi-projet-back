@@ -85,7 +85,8 @@ fastapi dev app/main.py
 
 ```mermaid
 flowchart LR
-  F["Front<br/>HTML/CSS/JS"] -- "fetch JSON" --> A["API FastAPI<br/>/api/..."]
+  F["Front<br/>HTML/CSS/JS"] -- "fetch JSON + token" --> A["API FastAPI<br/>/api/..."]
+  A --> S["Sécurité<br/>argon2 + JWT"]
   A -- "SQLModel" --> DB[("SQLite")]
 ```
 
@@ -103,6 +104,7 @@ flowchart LR
 │   ├── models.py      # les 7 tables, miroir de db/schema.sql
 │   └── routers/       # routes (à venir)
 │   ├── schemas.py     # données de l'API quand elles diffèrent des tables (utilisateur, menu, commande)
+│   ├── security.py    # hachage argon2, génération de mot de passe, tokens JWT
 ├── db/                # submodule : dépôt 4a-isi-projet-db 
 ├── init_db.py         # crée poleatheck.db depuis db/schema.sql
 ├── requirements.txt
