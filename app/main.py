@@ -1,3 +1,5 @@
+import os
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -31,3 +33,8 @@ app.include_router(commandes.router, prefix="/api")
 @app.get("/api/", tags=["Meta"])
 def version():
     return {"version": app.version}
+
+
+# Sert le front (submodule front/) 
+if os.path.isdir("front"):
+    app.mount("/", StaticFiles(directory="front", html=True), name="front")
