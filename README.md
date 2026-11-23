@@ -110,6 +110,7 @@ flowchart LR
 │       └── produits.py      # CRUD produits, stock
 │       ├── fermetures.py    # jours de fermeture
 │       ├── menus.py         # menus (produits N-N), disponibilité par dates
+│       └── commandes.py     # commandes + règles métier, total calculé
 ├── db/                      # submodule : dépôt 4a-isi-projet-db (schema.sql)
 ├── create_admin.py          # création d'un admin en ligne de commande
 ├── init_db.py               # crée poleatheck.db depuis db/schema.sql

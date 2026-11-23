@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app import models  
 from app.database import create_db_and_tables
-from app.routers import auth, fermetures, menus, produits, utilisateurs
+from app.routers import auth, commandes, fermetures, menus, produits, utilisateurs
 async def lifespan(app: FastAPI):
     create_db_and_tables()
     yield
@@ -27,6 +27,7 @@ app.include_router(utilisateurs.router, prefix="/api")
 app.include_router(produits.router, prefix="/api")
 app.include_router(fermetures.router, prefix="/api")
 app.include_router(menus.router, prefix="/api")
+app.include_router(commandes.router, prefix="/api")
 @app.get("/api/", tags=["Meta"])
 def version():
     return {"version": app.version}
