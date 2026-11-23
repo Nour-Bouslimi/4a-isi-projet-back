@@ -3,10 +3,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app import models  # noqa: F401  (enregistre les tables)
+from app import models  
 from app.database import create_db_and_tables
-from app.routers import auth, produits, utilisateurs
-@asynccontextmanager
+from app.routers import auth, fermetures, produits, utilisateurs
 async def lifespan(app: FastAPI):
     create_db_and_tables()
     yield
@@ -26,6 +25,7 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/api")
 app.include_router(utilisateurs.router, prefix="/api")
 app.include_router(produits.router, prefix="/api")
+app.include_router(fermetures.router, prefix="/api")
 @app.get("/api/", tags=["Meta"])
 def version():
     return {"version": app.version}
