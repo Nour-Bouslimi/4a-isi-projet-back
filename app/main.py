@@ -5,8 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app import models  # noqa: F401  (enregistre les tables)
 from app.database import create_db_and_tables
-from app.routers import auth, utilisateurs
-
+from app.routers import auth, produits, utilisateurs
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db_and_tables()
@@ -26,7 +25,7 @@ app.add_middleware(
 # Toutes les routes sont préfixées par /api
 app.include_router(auth.router, prefix="/api")
 app.include_router(utilisateurs.router, prefix="/api")
-
+app.include_router(produits.router, prefix="/api")
 @app.get("/api/", tags=["Meta"])
 def version():
     return {"version": app.version}

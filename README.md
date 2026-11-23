@@ -95,24 +95,24 @@ flowchart LR
 \### Structure du projet
 
 ```
-
 4a-isi-projet-back/
 ├── app/
-│   ├── main.py        # point d'entrée, création des tables au démarrage
-│   ├── config.py      # paramètres (URL base, clé secrète JWT)
-│   ├── database.py    # connexion SQLite, session par requête
-│   ├── models.py      # les 7 tables, miroir de db/schema.sql
-│   └── routers/       # routes (à venir)
-│   ├── schemas.py     # données de l'API quand elles diffèrent des tables (utilisateur, menu, commande)
-│   ├── security.py    # hachage argon2, génération de mot de passe, tokens JWT
-│   ├── dependances.py        # controle d'accès : connecté / actif (non bloqué) / admin
-│   ├── utilisateurs.py  # profil, mot de passe, liste et blocage (admin)
-├── create_admin.py    # création d'un admin en ligne de commande
-├── db/                # submodule : dépôt 4a-isi-projet-db 
-├── init_db.py         # crée poleatheck.db depuis db/schema.sql
+│   ├── main.py              # point d'entrée, CORS, branchement des routers
+│   ├── config.py            # paramètres (URL base, clé secrète JWT)
+│   ├── database.py          # connexion SQLite, session par requête
+│   ├── models.py            # les 7 tables, miroir de db/schema.sql
+│   ├── schemas.py           # données de l'API quand elles diffèrent des tables
+│   ├── security.py          # hachage argon2, génération de mot de passe, tokens JWT
+│   ├── dependances.py       # contrôle d'accès : connecté / actif (non bloqué) / admin
+│   └── routers/
+│       ├── auth.py          # inscription, connexion
+│       ├── utilisateurs.py  # profil, mot de passe, liste et blocage (admin)
+│       └── produits.py      # CRUD produits, stock
+├── db/                      # submodule : dépôt 4a-isi-projet-db (schema.sql)
+├── create_admin.py          # création d'un admin en ligne de commande
+├── init_db.py               # crée poleatheck.db depuis db/schema.sql
 ├── requirements.txt
 └── README.md
-
 ```
 
 
